@@ -1,0 +1,57 @@
+<!--
+user.html
+This file displays a user's profile page. This will be userful later in the product's cycle when users can buy, sell and trade contacts.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+
+{% block title %}DonorPop - {{ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+    <h1>{{ user.username }}</h1>
+
+    {% if user.name or user.location %}
+    <p>
+        {% if user.name %}{{ user.name }}{% endif %}
+        <!-- Displays a Google Map of the user's location. May remove this later -->
+        {% if user.location %}
+            From <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a>
+        {% endif %}
+    </p>
+    {% endif %}
+    
+    {% if current_user.is_administrator() %}
+    <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+    {% endif %}
+
+    {% if user.about_me %}
+    <p>
+        {{ user.about_me }}
+    </p>
+    {% endif %}
+
+    <p>
+        Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.
+    </p>
+
+    <p>
+        <!-- This displays a button to allow users to edit only their own profiles -->
+        {% if user == current_user %}
+        <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
+        {% endif %}
+
+        <!-- This button allows administrators to edit anyone's profile -->
+        {% if current_user.is_administrator() %}
+        <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit Profile [Admin]</a>
+        {% endif %}
+    </p>
+
+</div>
+{% endblock %}

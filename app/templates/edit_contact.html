@@ -1,0 +1,23 @@
+<!--
+edit_contact.html
+This file displays the interface for a user to edit on of their contacts.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}DonorPop - Edit Contact{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Edit Contact</h1>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

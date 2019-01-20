@@ -1,0 +1,23 @@
+<!--
+upload.html
+This file is currently only accessible to site administrators. It allows the administrator to upload a .sql file representing an iDonatePro.com database and add the contents to the site's database. The intent of this process is to allow current iDonatePro users to switch over to DonorPop and be able to easily take their contacts on iDonatePro with them to DonorPop.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}DonorPop - Upload Database{% endblock %}
+{% block page_content %}
+
+
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+</form>
+{% endblock %}

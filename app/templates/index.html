@@ -1,0 +1,27 @@
+<!--
+index.html
+This is the file for displaying the site's homepage.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}DonorPop{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+
+    </br>
+
+    {% if current_user.is_instructor() %}
+    <a class="btn btn-default", href="{{ url_for('.add_contact') }}">Add a Contact</a>
+    {% endif %}
+</div>
+
+{% endblock %}

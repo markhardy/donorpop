@@ -1,0 +1,88 @@
+<!--
+base.html
+This file contains markup that is extended to every page on the site. It contains all navigation bar elements and the markup for displaying Bootstrap's flash messages.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "bootstrap/base.html" %}
+
+{% block title %}DonorPop{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+
+{% block navbar %}
+<!-- Top Navigation Bar -->
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="row">
+
+        <!-- Home Link in NavBar -->
+        <div class="navbar-header col-xs-2">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">DonorPop</a>
+        </div>
+
+        <!-- Search Form -->
+        <div class="nav navbar-nav navbar-left col-xs-0">
+            <form class="navbar-firm navbar-left" method="POST" action={{ url_for('main.search') }}>
+            <input name="text" class="form-control form-control-sm" placeholder="Search Contacts">
+            </div>
+        <div class="nav navbar-nav navbar-left col-xs-2">
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">Search</button>
+            </span>
+        </div>
+         </form>
+        
+
+        <!-- Account panel dropdown -->
+        <div class="navbar-collapse collapse col-xl-6">
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+			<li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+                        <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Flash Messages -->
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}

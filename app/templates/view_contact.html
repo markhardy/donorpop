@@ -1,0 +1,281 @@
+<!--
+view_contact.html
+This displays a contact's information page to a corresponding user
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}DonorPop - Contact{% endblock %}
+{% block page_content %}
+<div class="row">
+	<div class="col-md-8">
+
+		<h1>
+			{{ contact.first_name }} {{ contact.middle_name }} {{ contact.last_name }}
+			<a href="/edit-contact/{{ contact.id }}" class="btn btn-info" role="button">Edit Contact</a>
+		</h1>
+
+		{% if contact.checkForNone(contact.occupation) %}
+			<h3>{{ contact.occupation}}</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.organization) %}
+			<h3>at {{ contact.organization }} </h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.email) %}
+			<h3>{{ contact.email }}</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.phone_mobile) %}
+			<h3>{{ contact.phone_mobile }}(m)</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.phone_work) %}
+			<h3>{{ contact.phone_work }}(w)</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.phone_home) %}
+			<h3>{{ contact.phone_home }}(h)</h3>
+		{% endif %}
+
+		</br>
+
+		{% if contact.checkForNone(contact.street_address1) %}
+			<h3>{{ contact.street_address1 }}</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.unit_number1) %}
+			<h3>{{ contact.unit_number1 }}</h3>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.city1) %}
+			<h3>{{ contact.city1 }},
+		{% endif %}
+
+		{% if contact.checkForNone(contact.state1) %}
+			{{ contact.state1 }}
+		{% endif %}
+
+		{% if contact.checkForNone(contact.zip_code1) %}
+			{{ contact.zip_code1 }}</h3>
+		{% endif %}
+
+		<!-- This is the notes section as a user may want to include a note after making contact with a potential donor -->
+		<!-- NOTE TO SELF: RE-WORK NOTES AS A HASHMAP THAT CAN BE PLUGGED INTO THE DATABASE! -->
+
+		{% if contact.checkForNone(contact.note1) %}
+			<h3>Notes: {{ contact.note1 }}</h3>
+			<p>Added: {{ contact.note1_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note2) %}
+			<h3>{{ contact.note2 }}</h3>
+			<p>Added: {{ contact.note2_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note3) %}
+			<h3>{{ contact.note3 }}</h3>
+			<p>Added: {{ contact.note3_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note4) %}
+			<h3>{{ contact.note4 }}</h3>
+			<p>Added: {{ contact.note4_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note5) %}
+			<h3>{{ contact.note5 }}</h3>
+			<p>Added: {{ contact.note5_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note6) %}
+			<h3>Notes: {{ contact.note6 }}</h3>
+			<p>Added: {{ contact.note6_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note7) %}
+			<h3>{{ contact.note7 }}</h3>
+			<p>Added: {{ contact.note7_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note8) %}
+			<h3>{{ contact.note8 }}</h3>
+			<p>Added: {{ contact.note8_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note9) %}
+			<h3>{{ contact.note9 }}</h3>
+			<p>Added: {{ contact.note9_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note10) %}
+			<h3>{{ contact.note10 }}</h3>
+			<p>Added: {{ contact.note10_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note11) %}
+			<h3>Notes: {{ contact.note11 }}</h3>
+			<p>Added: {{ contact.note11_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note12) %}
+			<h3>{{ contact.note12 }}</h3>
+			<p>Added: {{ contact.note12_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note13) %}
+			<h3>{{ contact.note13 }}</h3>
+			<p>Added: {{ contact.note13_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note14) %}
+			<h3>{{ contact.note14 }}</h3>
+			<p>Added: {{ contact.note14_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note15) %}
+			<h3>{{ contact.note15 }}</h3>
+			<p>Added: {{ contact.note15_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note16) %}
+			<h3>Notes: {{ contact.note16 }}</h3>
+			<p>Added: {{ contact.note16_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note17) %}
+			<h3>{{ contact.note17 }}</h3>
+			<p>Added: {{ contact.note17_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note18) %}
+			<h3>{{ contact.note18 }}</h3>
+			<p>Added: {{ contact.note18_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note19) %}
+			<h3>{{ contact.note19 }}</h3>
+			<p>Added: {{ contact.note19_stamp }}</p>
+		{% endif %}
+
+		{% if contact.checkForNone(contact.note20) %}
+			<h3>{{ contact.note20 }}</h3>
+			<p>Added: {{ contact.note20_stamp }}</p>
+		{% endif %}
+
+	</div>
+</div>
+
+</br>
+</br>
+
+<div class="row">
+	<div class="col-xs-4">
+    	{{ wtf.quick_form(note_form) }}
+	</div>
+</div>
+
+{% if current_user.is_user() %}
+	{% if not current_user.is_instructor() %}
+		<div class="row">
+			<div class="col-xs-8">
+    			{{ wtf.quick_form(form) }}
+			</div>
+		</div>
+	{% endif %}
+{% endif %}
+
+</br>
+</br>
+
+<!-- This section is for displayed how much a contact has donated to various campaigns -->
+<!-- Note to self: Is there a more elegant way of doing this? With lists maybe? -->
+<div class="row">
+	<div class="col-md-10">
+		{% if contact.hasDonated() %}
+			<h2>Total Donations: {{ contact.getCumulativeDonationTotal() }} </h2>
+			{% if contact.hasDonatedToLeaMarquezPetersonForCongress() %}
+				<p>Lea Marquez Peterson For Congress 2018: {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress 2018: ") }}</p>
+				<p>Lea Marquez Peterson For Congress 2018 Most Recent Amount: {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress 2018 Most Recent Amount: ") }} on {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress 2018 Most Recent Date: ") }}</p>
+				<p>Lea Marquez Peterson For Congress 2018 Highest Amount: {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress 2018 Highest Amount: ") }} on {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress 2018 Highest Date: ") }}</p>
+				<p>Lea Marquez Peterson For Congress Primary 2018: {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress Primary 2018: ") }}</p>
+				<p>Lea Marquez Peterson For Congress General 2018: {{ contact.getLeaMarquezPetersonForCongress2018DonationData("Lea Marquez Peterson For Congress General 2018: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToMcSallyForCongress() %}
+				<p>Martha McSally For Congress: {{ contact.getMcSallyForCongressDonationData("McSally For Congress: ") }}</p>
+				<p>McSally For Congress Most Recent Amount: {{ contact.getMcSallyForCongressDonationData("McSally For Congress Most Recent Amount: ") }} on {{ contact.getMcSallyForCongressDonationData("McSally For Congress Most Recent Date: ") }}</p>
+				<p>McSally For Congress 2018 Highest Amount: {{ contact.getMcSallyForCongressDonationData("McSally For Congress Highest Amount: ") }} on {{ contact.getMcSallyForCongressDonationData("McSally For Congress Highest Date: ") }}</p>
+				<p>McSally For Congress 2016: {{ contact.getMcSallyForCongressDonationData("McSally For Congress 2016: ") }}</p>
+				<p>McSally For Congress 2018: {{ contact.getMcSallyForCongressDonationData("McSally For Congress 2018: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToMcSallyForSenate() %}
+				<p>Martha McSally For Senate: {{ contact.getMcSallyForSenateDonationData("McSally For Senate: ") }}</p>
+				<p>McSally For Senate Most Recent Amount: {{ contact.getMcSallyForSenateDonationData("McSally For Senate Most Recent Amount: ") }} on {{ contact.getMcSallyForSenateDonationData("McSally For Senate Most Recent Date: ") }}</p>
+				<p>McSally For Senate 2018 Highest Amount: {{ contact.getMcSallyForSenateDonationData("McSally For Senate Highest Amount: ") }} on {{ contact.getMcSallyForSenateDonationData("McSally For Senate Highest Date: ") }}</p>
+				<p>McSally For Senate 2018: {{ contact.getMcSallyForSenateDonationData("McSally For Senate 2018: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToMcCain() %}
+				<p>John McCain: {{ contact.getMcCainDonationData("McCain: ") }}</p>
+				<p>John McCain Most Recent Amount: {{ contact.getMcCainDonationData("McCain Most Recent Amount: ") }} on {{ contact.getMcCainDonationData("McCain Most Recent Date: ") }}</p>
+				<p>John McCain Highest Amount: {{ contact.getMcCainDonationData("McCain Highest Amount: ") }} on {{ contact.getMcCainDonationData("McCain Highest Date: ") }}</p>
+				<p>McCain 2016: {{ contact.getMcCainDonationData("McCain 2016: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToJeffFlake() %}
+				<p>Jeff Flake: {{ contact.getJeffFlakeDonationData("Jeff Flake: ") }}</p>
+				<p>Jeff Flake Most Recent Amount: {{ contact.getJeffFlakeDonationData("Jeff Flake Most Recent Amount: ") }} on {{ contact.getJeffFlakeDonationData("Jeff Flake Most Recent Date: ") }}</p>
+				<p>Jeff Flake 2018 General: {{ contact.getJeffFlakeDonationData("Jeff Flake 2018 General: ") }}</p>
+				<p>Jeff Flake 2016 General: {{ contact.getJeffFlakeDonationData("Jeff Flake 2016 General: ") }}</p>
+				<p>Jeff Flake 2016 Primary: {{ contact.getJeffFlakeDonationData("Jeff Flake 2016 Primary: ") }}</p>
+				<p>Jeff Flake 2018: {{ contact.getJeffFlakeDonationData("Jeff Flake 2018: ") }}</p>
+				<p>Jeff Flake 2012: {{ contact.getJeffFlakeDonationData("Jeff Flake 2012: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToNRCC() %}
+				<p>NRCC: {{ contact.getNRCCDonationData("NRCC: ") }}</p>
+				<p>NRCC Most Recent Amount: {{ contact.getNRCCDonationData("NRCC Most Recent Amount: ") }} on {{ contact.getNRCCDonationData("NRCC Most Recent Date: ") }}</p>
+				<p>NRCC Highest Amount: {{ contact.getNRCCDonationData("NRCC Highest Amount: ") }} on {{ contact.getNRCCDonationData("NRCC Highest Date: ") }}</p>
+				<p>NRCC (NRCC): {{ contact.getNRCCDonationData("NRCC (NRCC): ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToVictoryFundForAZGOP() %}
+				<p>Victory Fund For AZGOP: {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP: ") }}</p>
+				<p>Victory Fund For AZGOP Most Recent Amount: {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP Most Recent Amount: ") }} on {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP Most Recent Date: ") }}</p>
+				<p>Victory Fund For AZGOP Highest Amount: {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP Highest Amount: ") }} on {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP Highest Date: ") }}</p>
+				<p>Victory Fund For AZGOP Click Fund: {{ contact.getVictoryFundForAZGOPDonationData("Victory Fund For AZGOP Click Fund: ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToVictoryFundForNRCC() %}
+				<p>Victory Fund For NRCC: {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC: ") }}</p>
+				<p>Victory Fund For NRCC Most Recent Amount: {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC Most Recent Amount: ") }} on {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC Most Recent Date: ") }}</p>
+				<p>Victory Fund For NRCC Highest Amount: {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC Highest Amount: ") }} on {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC Highest Date: ") }}</p>
+				<p>Victory Fund For NRCC (Victory Fund For NRCC): {{ contact.getVictoryFundForNRCCDonationData("Victory Fund For NRCC (Victory Fund For NRCC): ") }}</p>
+			{% endif %}
+
+			{% if contact.hasDonatedToVIPCommunityEvents() %}
+				<p>VIP Community Events: {{ contact.getVIPCommunityEventsDonationData("VIP Community Events: ") }}</p>
+				<p>VIP Community Events Most Recent Amount: {{ contact.getVIPCommunityEventsDonationData("VIP Community Events Most Recent Amount: ") }} on {{ contact.getVIPCommunityEventsDonationData("VIP Community Events Most Recent Date: ") }}</p>
+				<p>VIP Community Events Highest Amount: {{ contact.getVIPCommunityEventsDonationData("VIP Community Events Highest Amount: ") }} on {{ contact.getVIPCommunityEventsDonationData("VIP Community Events Highest Date: ") }}</p>
+				<p>VIP Community Events (VIP Community Events): {{ contact.getVIPCommunityEventsDonationData("VIP Community Events (VIP Community Events): ") }}</p>
+			{% endif %}
+
+		{% else %}
+
+			<h2>No Donations</h2>
+
+		{% endif %}
+		
+	</div>
+</div>
+
+{% endblock %}

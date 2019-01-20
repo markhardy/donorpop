@@ -1,0 +1,30 @@
+<!--
+query_results.html
+Returns the results a user's search of their contacts. A list of corresponding database rows' data is iterated through and displayed.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}DonorPop - Search Results{% endblock %}
+{% block page_content %}
+
+<p>
+	<!--
+		query_obj is a Python list of every returned database row's data that is returned from a user's search of their contacts.
+		We are looping through each element (contact's information returned from the database) and displaying each contact as a link to that contact.
+	-->
+	{% for q in query_obj %}
+	<ul>
+		<li><a href="{{ url_for('.view_contact', contact_name = q.id) }}">{{ q.first_name }} {{ q.middle_name }} {{ q.last_name }}</a></li>
+	</ul>
+	{% endfor %}
+
+</p>
+
+{% endblock %}

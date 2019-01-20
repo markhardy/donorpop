@@ -1,0 +1,23 @@
+<!--
+edit_profile.html
+This file displays the interface for a user to change their profile information.
+
+Last Updated: 1.18.2019
+Written By: Mark Hardy
+Updated By: Mark Hardy
+markhardy@email.arizona.edu
+-->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}DonorPop - Edit Profile{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Edit Profile</h1>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}
