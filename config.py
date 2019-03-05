@@ -25,6 +25,7 @@ class Config:
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     UPLOAD_FOLDER = "C:\Users\Mark Awesome\Desktop\Flask\Hellowold\github\hub\uploads"
     ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv'])
+    SSL_DISABLE = True
 
     @staticmethod
     def init_app(app):
@@ -39,20 +40,42 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD = "A66056504" #os.environ.get('MAIL_PASSWORD')
     
     #   Change to os.environ.get before deploying
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:A66056504@127.0.0.1/attendance_dev"
+    #SQLALCHEMY_DATABASE_URI = "mysql+pymysql://mwhardy1985:A66056504a!@hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com/hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com:3306"
+
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:A66056504@127.0.0.1/attendance_dev" #For local db
     
 class TestingConfig(Config):
     TESTING = True
+    #SQLALCHEMY_DATABASE_URI = "mysql+pymysql://mwhardy1985:A66056504a!@hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com/hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com:3306"
+
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:A66056504@127.0.0.1/attendance_test"
 
 class ProductionConfig(Config):
+    #SQLALCHEMY_DATABASE_URI = "mysql+pymysql://mwhardy1985:A66056504a!@hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com/hardydb.cr19zma8gn4h.us-east-1.rds.amazonaws.com:3306"
+
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                                 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+
+class HerokuConfig(Config):
+    @classmethod
+    def init_app(cls, app):
+        ProductionConfig.init_app(app)
+        from werkzeug.contrib.fixers import ProxyFix
+        app.wsgi_app = ProxyFix(app.wsgi_app)
+
+        # log to stdderr
+        import logging
+        from logging import StreamHandler
+        file_handler = StreamHandler
+        file_handler.setLevel(logging.WARNING)
+        app.logger.addHandler(file_handler)
+        SSL_DISABLE = bool(os.environ.get('SSL_DISABLE'))
 
 config = {
     'development' : DevelopmentConfig,
     'testing' : TestingConfig,
     'production' : ProductionConfig,
+    'heroku' : HerokuConfig,
 
     'default' : DevelopmentConfig
 }

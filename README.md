@@ -1,8 +1,7 @@
-<h1>DonorPop</h1>
+Flasky
+======
 
-This is a site I'm creating to facilitate donation and donor tracking for political campaigns. It's being written with Python's Flask microframework and Bootstrap.
+This repository contains the archived source code examples for my O'Reilly book [Flask Web Development](http://www.flaskbook.com), first edition. For the code examples for the current edition of the book, go to [https://github.com/miguelgrinberg/flasky](https://github.com/miguelgrinberg/flasky).
 
-You will need to make changes in donorpop/config.py for your system, have Python 2.7 or higher and MySQL installed to get up and running.
+The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
 
-Created by: Mark Hardy
-markhardy@email.arizona.edu
